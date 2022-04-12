@@ -1,9 +1,10 @@
 from compte import Compte
 
 
-class CompteCourant (Compte):
+class CompteCourant(Compte):
 
-    def __init__(self, autorisation_decouvert, pourcentage_agios):
+    def __init__(self, autorisation_decouvert, pourcentage_agios, numero_compte, nom_proprietaire, solde):
+        super().__init__(numero_compte, nom_proprietaire, solde)
         self._autorisation_decouvert = autorisation_decouvert
         self._pourcentage_agios = pourcentage_agios
 
