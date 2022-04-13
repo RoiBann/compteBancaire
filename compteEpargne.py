@@ -26,21 +26,9 @@ class CompteEpargne(Compte):
     def solde(self):
         print(self.montant_dispo)
 
-    """   
-    def appliquer_interets(self):
-        print(self._nom_proprietaire)
-        self._nom_proprietaire = 'test'
-        print(self._nom_proprietaire)
-        print("Versement plus interêts obtenus ", self.set_pourcentage_interets(), "€")
-    """
 
     def get_pourcentage_interets(self):
         return self.pourcentage_interets
-
-    """
-    def set_pourcentage_interets(self):
-         return str(self.versement() * 1.02)
-     """
 
 
     def get_nom_proprietaire(self):

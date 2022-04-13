@@ -10,7 +10,10 @@ class CompteCourant(Compte):
 
 
     def retrait(self, montant_retrait):
-
+        """
+        Fonction de retrait d'argent.
+        Si le compte passe en négatif, des agios sont appliqués
+        """
         #### GESTION ERREURS #####
         if type(montant_retrait) is str:
             return
