@@ -59,7 +59,6 @@ class CompteCourant(Compte):
 
 if __name__ == '__main__':
     def test_all_cc():
-        # name = input("Entrez votre nom : ")
         cc = CompteCourant(500, 1.02, 1357, "name", 1300)
         cc.afficher_solde()
         cc.retrait(1300)

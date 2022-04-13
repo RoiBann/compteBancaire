@@ -9,6 +9,7 @@ class Compte(ABC):
         self._nom_proprietaire = nom_proprietaire
         self._autorisation_decouvert = 0
 
+
     def retrait(self, _montant_retrait):
         """
         Fonction retrait.
