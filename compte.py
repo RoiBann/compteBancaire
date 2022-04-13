@@ -1,27 +1,25 @@
-# from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod
 
+class Compte(ABC):
 
-#class Compte(ABC):
-class Compte():
-
-    # @abstractmethod
+    @abstractmethod
     def __init__(self, numero_compte, nom_proprietaire, solde):
         self.solde = solde
         self._numero_compte = numero_compte
         self._nom_proprietaire = nom_proprietaire
+        self._autorisation_decouvert = 0
 
     def retrait(self, _montant_retrait):
         """
         Fonction retrait.
         Si le retrait est supérieur au solde, un message d'erreur s'affiche
         Enlève le montant donné du compte.
-        :return:
         """
-        if self.solde >= _montant_retrait:
+        if _montant_retrait <= self._autorisation_decouvert + self.solde:
             self.solde -= _montant_retrait
             print("Retrait montant ", _montant_retrait)
         else:
-            print("Montant du solde insuffisant.")
+            raise Exception("Montant indisponible")
 
 
     def versement(self, virement):

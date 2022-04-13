@@ -14,27 +14,12 @@ class CompteCourant(Compte):
         #### GESTION ERREURS #####
         if type(montant_retrait) is str:
             return
-
         #### ACTIONS #####
-        if self.solde >= montant_retrait and self.solde >= 0:
-            self.solde -= montant_retrait
-            print("Montant du retrait effectué : ", montant_retrait)
-        elif montant_retrait > self._autorisation_decouvert:
-            print("Plafond découvert atteint.")
-
-            """
-            recommencer = input("Souhaitez-vous entrez un nouveau montant? (y/n) :")
-            while recommencer == 'y':
-                self.retrait()
-                break
-            else:
-                print("Au revoir")"""
-        else:
-            if self.solde < 0 and montant_retrait < self._autorisation_decouvert:
-                print("ok")
-            else:
-                pass
-
+        try:
+            super().retrait(montant_retrait)
+            self.set_appliquer_agios()
+        except Exception as e:
+            print(e)
 
 
     def versement(self, virement):
@@ -58,7 +43,7 @@ class CompteCourant(Compte):
 
     def set_appliquer_agios(self):
         if self.solde < 0:
-            self.appliquer_agios()
+            self.solde += self.appliquer_agios()
 
 
     def set_autorisation_decouvert(self):
@@ -72,16 +57,17 @@ class CompteCourant(Compte):
 if __name__ == '__main__':
     def test_all_cc():
         # name = input("Entrez votre nom : ")
-        # cc = CompteCourant(-500, 1.02, 1357, name, 1300)
-        cc = CompteCourant(-500, 1.02, 1357, "name", 1300)
+        cc = CompteCourant(500, 1.02, 1357, "name", 1300)
         cc.afficher_solde()
-        cc.retrait(20)
+        cc.retrait(1300)
+        cc.afficher_solde()
+        cc.retrait(100)
         cc.afficher_solde()
         cc.versement(50)
         cc.afficher_solde()
         cc.retrait(500)
         cc.afficher_solde()
-        cc.retrait(850)
+        cc.retrait(900)
         cc.afficher_solde()
         cc.retrait(11.1)
         cc.afficher_solde()
