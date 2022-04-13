@@ -25,11 +25,9 @@ class CompteEpargne(Compte):
         print(self.montant_dispo())
 
     def appliquer_interets(self):
-
         print(self._nom_proprietaire)
         self._nom_proprietaire = 'test'
         print(self._nom_proprietaire)
-
         print("Versement plus interêts obtenus ", self.set_pourcentage_interets(), "€")
 
     def get_pourcentage_interets(self):
@@ -39,6 +37,12 @@ class CompteEpargne(Compte):
         for i in range(1):
             pourcentage_interets = str(self.versementCE() * 1.02)
             return pourcentage_interets
+
+    def get_nom_proprietaire(self):
+        return self._nom_proprietaire
+
+    def set_nom_proprietaire(self):
+        return self._nom_proprietaire
 
 
 
@@ -50,7 +54,7 @@ def test_all_ce():
     ce.afficher_solde()
     print(ce.get_nom_proprietaire())
 
-test_all_ce()
+# test_all_ce()
 
 
 

@@ -29,8 +29,6 @@ class Compte:
 
     def afficher_solde(self):
         print(self.solde_dispo())
-        #print("Montant disponible "+ str(self.solde) + " euro")
-        #print("Montant disponible", self.solde, "€")
 
     def get_numero_compte(self):
         return self._numero_compte
